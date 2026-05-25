@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Options</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('pexels-sbsoneji-3581368.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #places {
+      margin-top: 30px;
+      text-align: left;
+      color: #333;
+    }
+
+    #places ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    #places button {
+      background-color: #008CBA;
+      margin-top: 15px;
+    }
+
+    #places button:hover {
+      background-color: #007bb5;
+    }
+  </style>
+
+  <script>
+    function showPlaces(category) {
+      const data = {
+        common: [
+          'Jaipur',
+          'Rishikesh',
+          'Andaman and Nicobar',
+          'Ooty',
+          'Munnar',
+          'Isha Foundation Coimbatore'
+        ],
+        friends: [
+          'Leh-Ladakh',
+          'Kerala',
+          'Vizag',
+          'Manali',
+          'Kashmir'
+        ],
+        family: [
+          'Kashi',
+          'Vaishno Devi',
+          'Kashmir',
+          'Bhadrachalam',
+          'Kanyakumari'
+        ]
+      };
+      const places = data[category] || [];
+      const display = document.getElementById("places");
+      display.innerHTML = `
+        <h3>Places:</h3>
+        <ul>${places.map(p => `<li>${p}</li>`).join('')}</ul>
+        <a href="index.html"><button>Next</button></a>
+      `;
+    }
+  </script>
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h2>Select a Category</h2>
+    <button onclick="showPlaces('common')">Common Places</button>
+    <button onclick="showPlaces('friends')">Friends</button>
+    <button onclick="showPlaces('family')">Family</button>
+
+    <div id="places"></div>
+  </div>
+</body>
+</html>
